@@ -75,7 +75,7 @@ function Module.IsAlive(Character)
 end
 Module.FastAttack = (function()
 	local FastAttack = {
-		Distance = 50,
+		Distance = 65,
 		attackMobs = true,
 		attackPlayers = true,
 		Equipped = nil,
