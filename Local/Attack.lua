@@ -169,7 +169,7 @@ Module.FastAttack = (function()
 		Distance = Distance or self.Distance
 
 		self:Process(self.attackMobs, Enemies, BladeHits, Position, Distance)
-		--self:Process(self.attackPlayers, Characters, BladeHits, Position, Distance)
+		self:Process(self.attackPlayers, Characters, BladeHits, Position, Distance)
 
 		return BladeHits
 	end
