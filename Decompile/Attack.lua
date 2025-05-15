@@ -78,7 +78,7 @@ function CombatModule.StartCombat()
 	local slotValue = Player.CharValue:FindFirstChild("Slot" .. Player.Character.Onslot.Value).Units.Value
 	local unitConfig = UnitsData[slotValue]
 
-	if unitConfig and isGrounded() then
+	if unitConfig then
 		if tick() - lastAttackTime > unitConfig.ResetCombo and comboIndex <= #unitConfig.Animations then
 			comboIndex = 1
 		end
