@@ -1,3 +1,15 @@
+--[[
+
+
+
+
+VYNX PLS DO NOT SKID THAT MY WORK FVCK U
+discord.gg/g36syShCfC
+
+
+
+]]
+
 local Players = game:GetService("Players")
 local Debris = game:GetService("Debris")
 local UserInputService = game:GetService("UserInputService")
