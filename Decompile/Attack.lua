@@ -12,6 +12,9 @@ local Camera = Workspace.CurrentCamera
 local UnitsData = require(ReplicatedStorage.Modules.UnitsData)
 
 local CombatModule = {}
+CombatModule.Settings = {
+	UseBodyVelocityLook = true
+}
 
 local lastAttackTime = tick()
 local comboIndex = 1
@@ -34,6 +37,7 @@ local function isGrounded()
 end
 
 function CombatModule.BodyVelocityLook(character, speed, forceLookAtTarget)
+	if not CombatModule.Settings.UseBodyVelocityLook then return end
 	local target = character.Target.Value
 	local velocity = Instance.new("BodyVelocity")
 	velocity.MaxForce = Vector3.one * 25000
