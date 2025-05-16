@@ -126,7 +126,7 @@ function CombatModule.StartCombat()
 			end
 		end
 
-		if comboIndex > #unitConfig.Animations and tick() - lastAttackTime > unitConfig.ComboCooldown then
+		if comboIndex > #unitConfig.Animations and tick() - lastAttackTime > 0 then
 			comboIndex = 1
 		end
 	end
