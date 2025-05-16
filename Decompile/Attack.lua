@@ -113,11 +113,11 @@ function CombatModule.StartCombat()
 			humanoid.AutoRotate = false
 			humanoid.WalkSpeed = 4
 			humanoid.JumpPower = 0
-			Player.Character.Skill.Value = true
+			--Player.Character.Skill.Value = true
 
-			task.wait(unitConfig.TimePerAttack)
+			--task.wait(unitConfig.TimePerAttack)
 
-			Player.Character.Skill.Value = false
+			--Player.Character.Skill.Value = false
 			if comboIndex == previousComboIndex and Player.Character.Skill.Value == false then
 				humanoid.WalkSpeed = 25
 				humanoid.AutoRotate = true
