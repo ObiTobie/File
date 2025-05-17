@@ -84,45 +84,45 @@ function CombatModule.StartCombat()
 		end
 
 		if comboIndex <= #unitConfig.Animations and tick() - lastAttackTime > unitConfig.TimePerAttack then
-			playAnimation(unitConfig.Animations[comboIndex])
+			-- playAnimation(unitConfig.Animations[comboIndex])
 
 			local skillUnit = game.ReplicatedFirst.SkillUnits:FindFirstChild(slotValue)
 			if skillUnit then
 				skillUnit.Slash.Event:Fire(Player.Character, comboIndex, slotValue, Player.Character.Target.Value)
 			end
 
-			local sound = ReplicatedStorage.Sound.Attack[slotValue]["Sound" .. comboIndex]:Clone()
-			Debris:AddItem(sound, 4)
-			sound.Parent = Player.Character.HumanoidRootPart
-			sound:Play()
+			-- local sound = ReplicatedStorage.Sound.Attack[slotValue]["Sound" .. comboIndex]:Clone()
+			-- Debris:AddItem(sound, 4)
+			-- sound.Parent = Player.Character.HumanoidRootPart
+			-- sound:Play()
 
 			ReplicatedStorage.Events.Combat:FireServer(slotValue, comboIndex)
 
 			lastAttackTime = tick()
 			comboIndex += 1
 
-			if Player.Character.Shoot.Value then
-				CombatModule.BodyVelocityLook(Player.Character, -6, true)
-				Player.Character.UnlockCam.Value = true
-			else
-				CombatModule.BodyVelocityLook(Player.Character, 9)
-			end
+			-- if Player.Character.Shoot.Value then
+			-- 	CombatModule.BodyVelocityLook(Player.Character, -6, true)
+			-- 	Player.Character.UnlockCam.Value = true
+			-- else
+			-- 	CombatModule.BodyVelocityLook(Player.Character, 9)
+			-- end
 
 			local previousComboIndex = comboIndex
-			local humanoid = Player.Character.Humanoid
-			humanoid.AutoRotate = false
-			humanoid.WalkSpeed = 4
-			humanoid.JumpPower = 0
+			-- local humanoid = Player.Character.Humanoid
+			-- humanoid.AutoRotate = false
+			-- humanoid.WalkSpeed = 4
+			-- humanoid.JumpPower = 0
 			--Player.Character.Skill.Value = true
 
 			--task.wait(unitConfig.TimePerAttack)
 
 			--Player.Character.Skill.Value = false
 			if comboIndex == previousComboIndex and Player.Character.Skill.Value == false then
-				humanoid.WalkSpeed = 25
-				humanoid.AutoRotate = true
-				humanoid.JumpPower = 50
-				Player.Character.UnlockCam.Value = false
+				-- humanoid.WalkSpeed = 25
+				-- humanoid.AutoRotate = true
+				-- humanoid.JumpPower = 50
+				-- Player.Character.UnlockCam.Value = false
 			end
 		end
 
