@@ -70,9 +70,9 @@ end
 
 function CombatModule.StartCombat()
 	if not Player.Character or not Player.Character:FindFirstChild("Humanoid") then return end
-	if Player.Character:FindFirstChild("Hit") or Player.Character.Stastus.Value ~= "" then return end
+	if Player.Character.Stastus.Value ~= "" then return end
 	if Player.Character.Parent.Name ~= "PlayerFodel" then return end
-	if Player.Character.Humanoid.Sit or Player.Character.Skill.Value or Player.Character:FindFirstChild("Death") then return end
+	if Player.Character.Humanoid.Sit or Player.Character:FindFirstChild("Death") then return end
 	if Player.CharValue.Lost.Value == true then return end
 
 	local slotValue = Player.CharValue:FindFirstChild("Slot" .. Player.Character.Onslot.Value).Units.Value
