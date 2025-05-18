@@ -83,7 +83,7 @@ function CombatModule.StartCombat()
 			comboIndex = 1
 		end
 
-		if comboIndex <= #unitConfig.Animations and tick() - lastAttackTime > (unitConfig.TimePerAttack/1.3) then
+		if comboIndex <= #unitConfig.Animations and tick() - lastAttackTime > unitConfig.TimePerAttack then
 			playAnimation(unitConfig.Animations[comboIndex])
 
 			local skillUnit = game.ReplicatedFirst.SkillUnits:FindFirstChild(slotValue)
@@ -126,7 +126,7 @@ function CombatModule.StartCombat()
 			-- end
 		end
 
-		if comboIndex > #unitConfig.Animations and tick() - lastAttackTime > 0 then
+		if comboIndex > #unitConfig.Animations and tick() - lastAttackTime > unitConfig.ComboCooldown then
 			comboIndex = 1
 		end
 	end
