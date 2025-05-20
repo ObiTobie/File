@@ -35,7 +35,7 @@ local function playAnimation(animation)
 	if Player.Character and Player.Character:FindFirstChild("Humanoid") then
 		local track = Player.Character.Humanoid:LoadAnimation(animation)
 		track:Play()
-		track:AdjustSpeed(10)
+		track:AdjustSpeed(math.huge)
 		return track
 	end
 end
