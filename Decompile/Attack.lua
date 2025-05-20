@@ -86,15 +86,15 @@ function CombatModule.StartCombat()
 		if comboIndex <= #unitConfig.Animations and tick() - lastAttackTime > unitConfig.TimePerAttack then
 			playAnimation(unitConfig.Animations[comboIndex])
 
-			local skillUnit = game.ReplicatedFirst.SkillUnits:FindFirstChild(slotValue)
-			if skillUnit then
-				skillUnit.Slash.Event:Fire(Player.Character, comboIndex, slotValue, Player.Character.Target.Value)
-			end
+			-- local skillUnit = game.ReplicatedFirst.SkillUnits:FindFirstChild(slotValue)
+			-- if skillUnit then
+			-- 	skillUnit.Slash.Event:Fire(Player.Character, comboIndex, slotValue, Player.Character.Target.Value)
+			-- end
 
-			local sound = ReplicatedStorage.Sound.Attack[slotValue]["Sound" .. comboIndex]:Clone()
-			Debris:AddItem(sound, 4)
-			sound.Parent = Player.Character.HumanoidRootPart
-			sound:Play()
+			-- local sound = ReplicatedStorage.Sound.Attack[slotValue]["Sound" .. comboIndex]:Clone()
+			-- Debris:AddItem(sound, 4)
+			-- sound.Parent = Player.Character.HumanoidRootPart
+			-- sound:Play()
 
 			ReplicatedStorage.Events.Combat:FireServer(slotValue, comboIndex)
 
