@@ -34,8 +34,8 @@ local comboIndex = 1
 local function playAnimation(animation)
 	if Player.Character and Player.Character:FindFirstChild("Humanoid") then
 		local track = Player.Character.Humanoid:LoadAnimation(animation)
-		track:AdjustSpeed(10)
 		track:Play()
+		track:AdjustSpeed(10)
 		return track
 	end
 end
