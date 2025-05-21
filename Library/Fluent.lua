@@ -1453,12 +1453,13 @@ end
 Library.Creator = Creator
 
 local New = Creator.New
-if game:GetService("CoreGui"):FindFirstChild("UiX-") then
-	game:GetService("CoreGui"):FindFirstChild("UiX-"):Destroy()
+local Path = RunService:IsStudio() and LocalPlayer.PlayerGui or game:GetService("CoreGui")
+if Path:FindFirstChild("UiX-Qwrty") then
+	Path:FindFirstChild("UiX-Qwrty"):Destroy()
 end
 local GUI = New("ScreenGui", {
-	Parent = RunService:IsStudio() and LocalPlayer.PlayerGui or game:GetService("CoreGui"),
-	Name = "UiX-"
+	Parent = Path,
+	Name = "UiX-Qwrty"
 })
 Library.GUI = GUI
 ProtectGui(GUI)
