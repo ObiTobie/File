@@ -41,6 +41,7 @@ local Themes = {
 		"Darker", 
 		"Qwerty", 
 		"AMOLED",
+		"Qwerty_Color2",
 		"Light",
 		"Balloon",
 		"SoftCream",
@@ -1453,13 +1454,12 @@ end
 Library.Creator = Creator
 
 local New = Creator.New
-local Path = RunService:IsStudio() and LocalPlayer.PlayerGui or game:GetService("CoreGui")
-if Path:FindFirstChild("UiX-Qwrty") then
-	Path:FindFirstChild("UiX-Qwrty"):Destroy()
+if game:GetService("CoreGui"):FindFirstChild("UiX-") then
+	game:GetService("CoreGui"):FindFirstChild("UiX-"):Destroy()
 end
 local GUI = New("ScreenGui", {
-	Parent = Path,
-	Name = "UiX-Qwrty"
+	Parent = RunService:IsStudio() and LocalPlayer.PlayerGui or game:GetService("CoreGui"),
+	Name = "UiX-"
 })
 Library.GUI = GUI
 ProtectGui(GUI)
