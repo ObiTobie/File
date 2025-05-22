@@ -27,10 +27,6 @@ if Show_Button then
 end
 
 local Asset = "rbxassetid://"
-if Game.GameId == 5750914919 then
-	Asset = ""
-end
-
 local RenderStepped = RunService.RenderStepped
 
 local ProtectGui = protectgui or (syn and syn.protect_gui) or function() end
@@ -1454,11 +1450,12 @@ end
 Library.Creator = Creator
 
 local New = Creator.New
-if game:GetService("CoreGui"):FindFirstChild("UiX-") then
-	game:GetService("CoreGui"):FindFirstChild("UiX-"):Destroy()
+local Path = RunService:IsStudio() and LocalPlayer.PlayerGui or game:GetService("CoreGui")
+if Path:FindFirstChild("UiX-") then
+	Path:FindFirstChild("UiX-"):Destroy()
 end
 local GUI = New("ScreenGui", {
-	Parent = RunService:IsStudio() and LocalPlayer.PlayerGui or game:GetService("CoreGui"),
+	Parent = Path,
 	Name = "UiX-"
 })
 Library.GUI = GUI
@@ -6550,5 +6547,4 @@ end)
 AddSignal(MinimizeButton.MouseButton1Click, function()
 	Library.Window:Minimize()
 end)
-
 return Library, SaveManager, InterfaceManager, Mobile
