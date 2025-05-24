@@ -2870,7 +2870,7 @@ Components.TitleBar = (function()
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
-					Text = Config.Title,
+					Text = Config.Title or "Title",
 				}),
 				New("TextLabel", {
 					RichText = true,
@@ -2889,7 +2889,7 @@ Components.TitleBar = (function()
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
-					Text = Config.SubTitle,
+					Text = Config.SubTitle or "SubTitle",
 				}),
 			}),
 			New("Frame", {
