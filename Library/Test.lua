@@ -1,4 +1,4 @@
--- Copyright Qwerty
+-- Copyright Qwerty fewfewfewfewfakewr gjnergjknerkjngerkjhngkjergregregregreertreg
 local Show_Button = false -- Shows the button for toggle fluent ui manually. If "false", works only on mobile, if "true", works everytime.
 local Button_Icon = "" -- Icon of the button for toggle fluent ui
 ----------------------------
