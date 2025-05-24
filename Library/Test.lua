@@ -1,4 +1,4 @@
--- Copyright Qwerty fewfewfewfewfakewr gjnergjknerkjngerkjhngkjergregregregreertreg
+-- Copyright Qwerty
 local Show_Button = false -- Shows the button for toggle fluent ui manually. If "false", works only on mobile, if "true", works everytime.
 local Button_Icon = "" -- Icon of the button for toggle fluent ui
 ----------------------------
@@ -2849,13 +2849,10 @@ Components.TitleBar = (function()
 				Position = UDim2.new(0, 16, 0, 0),
 				BackgroundTransparency = 1,
 			}, {
-				New("UIListLayout", {
-					Padding = UDim.new(0, 5),
-					FillDirection = Enum.FillDirection.Horizontal,
-					SortOrder = Enum.SortOrder.LayoutOrder,
-				}),
 				New("TextLabel", {
 					RichText = true,
+					AutomaticSize = Enum.AutomaticSize.X,
+					Size = UDim2.fromScale(0, 1),
 					FontFace = Font.new(
 						"rbxasset://fonts/families/GothamSSm.json",
 						Enum.FontWeight.Regular,
@@ -2864,18 +2861,18 @@ Components.TitleBar = (function()
 					TextSize = 12,
 					TextXAlignment = "Left",
 					TextYAlignment = "Center",
-					Size = UDim2.fromScale(0, 1),
-					AutomaticSize = Enum.AutomaticSize.X,
 					BackgroundTransparency = 1,
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
 					
-					Name = "TitleLabel",
-					Text = "",
+					Name = Config.Title,
+					Text = "...",
 				}),
 				New("TextLabel", {
 					RichText = true,
+					AutomaticSize = Enum.AutomaticSize.X,
+					Size = UDim2.fromScale(0, 1),
 					TextTransparency = 0.4,
 					FontFace = Font.new(
 						"rbxasset://fonts/families/GothamSSm.json",
@@ -2885,15 +2882,18 @@ Components.TitleBar = (function()
 					TextSize = 12,
 					TextXAlignment = "Left",
 					TextYAlignment = "Center",
-					Size = UDim2.fromScale(0, 1),
-					AutomaticSize = Enum.AutomaticSize.X,
 					BackgroundTransparency = 1,
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
 					
-					Text = "",
+					Text = Config.SubTitle,
 					Name = "SubTitleLabel",
+				}),
+				New("UIListLayout", {
+					Padding = UDim.new(0, 5),
+					FillDirection = Enum.FillDirection.Horizontal,
+					SortOrder = Enum.SortOrder.LayoutOrder,
 				}),
 			}),
 			New("Frame", {
@@ -2906,17 +2906,15 @@ Components.TitleBar = (function()
 			}),
 		})
 		
-		TitleBar.TitleLabel = TitleBar.Frame.Frame.TitleLabel
-		TitleBar.SubTitleLabel = TitleBar.Frame.Frame.SubTitleLabel
+		--TitleBar.TitleLabel = TitleBar.Frame.Frame.TitleLabel
+		--TitleBar.SubTitleLabel = TitleBar.Frame.Frame.SubTitleLabel
 		
-		if TitleBar.TitleLabel and TitleBar.SubTitleLabel then
-			TitleBar.TitleLabel.Text = "..."
-			TitleBar.SubTitleLabel.Text = "..."
-			delay(2, function()
-				TitleBar.TitleLabel.Text = Config.Title
-				TitleBar.SubTitleLabel.Text = Config.SubTitle
-			end)
-		end
+		--if TitleBar.TitleLabel and TitleBar.SubTitleLabel then
+		--	delay(1, function()
+		--		TitleBar.TitleLabel.Text = Config.Title
+		--		TitleBar.SubTitleLabel.Text = Config.SubTitle
+		--	end)
+		--end
 
 		TitleBar.CloseButton = BarButton(Components.Assets.Close, UDim2.new(1, -4, 0, 4), TitleBar.Frame, function()
 			Library.Window:Dialog({
