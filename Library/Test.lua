@@ -3085,10 +3085,6 @@ Components.Window = (function()
 			Window = Window,
 		})
 		
-		if Window.TitleBar.TitleLabel and Window.TitleBar.SubTitleLabel then
-		TextSize(Window.TitleBar.TitleLabel)
-		TextSize(Window.TitleBar.SubTitleLabel)
-		end
 		if Library.UseAcrylic then
 			Window.AcrylicPaint.AddParent(Window.Root)
 		end
@@ -3358,7 +3354,11 @@ Components.Window = (function()
 			LastTime = 0
 			Window.SelectorPosMotor:setGoal(Instant(TabModule:GetCurrentTabPos()))
 		end)
-
+		
+		if Window.TitleBar.TitleLabel and Window.TitleBar.SubTitleLabel then
+			TextSize(Window.TitleBar.TitleLabel)
+			TextSize(Window.TitleBar.SubTitleLabel)
+		end
 		return Window
 	end
 end)()
