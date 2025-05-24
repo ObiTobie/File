@@ -2910,8 +2910,12 @@ Components.TitleBar = (function()
 		TitleBar.SubTitleLabel = TitleBar.Frame.Frame.SubTitleLabel
 		
 		if TitleBar.TitleLabel and TitleBar.SubTitleLabel then
-			TitleBar.TitleLabel.Text = Config.Title
-			TitleBar.SubTitleLabel.Text = Config.SubTitle
+			TitleBar.TitleLabel.Text = "LOADING"
+			TitleBar.SubTitleLabel.Text = "LOADING"
+			delay(.5, function()
+				TitleBar.TitleLabel.Text = Config.Title
+				TitleBar.SubTitleLabel.Text = Config.SubTitle
+			end)
 		end
 
 		TitleBar.CloseButton = BarButton(Components.Assets.Close, UDim2.new(1, -4, 0, 4), TitleBar.Frame, function()
