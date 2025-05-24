@@ -2783,6 +2783,10 @@ Components.TitleBar = (function()
 
 	return function(Config)
 		local TitleBar = {}
+		
+		local TextSize = function(TextLabel,label)
+			TextLabel.Size = UDim2.new(0, label.TextBounds.X, 1, 0)
+		end
 
 		local function BarButton(Icon, Pos, Parent, Callback)
 			local Button = {
@@ -2905,8 +2909,10 @@ Components.TitleBar = (function()
 			}),
 		})
 		
-		--TitleBar.TitleLabel = TitleBar.Frame.Frame.TitleLabel
-		--TitleBar.SubTitleLabel = TitleBar.Frame.Frame.SubTitleLabel
+		TitleBar.TitleLabel = TitleBar.Frame.Frame.TitleLabel
+		TextSize(TitleBar.TitleLabel, TitleBar.TitleLabel.Text)
+		TitleBar.SubTitleLabel = TitleBar.Frame.Frame.SubTitleLabel
+		TextSize(TitleBar.SubTitleLabel, TitleBar.SubTitleLabel.Text)
 		
 		--if TitleBar.TitleLabel and TitleBar.SubTitleLabel then
 		--	delay(1, function()
