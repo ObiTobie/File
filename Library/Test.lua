@@ -2869,7 +2869,7 @@ Components.TitleBar = (function()
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
-					Text = "...",
+					Text = Config.Title,
 					Name = "TitleLabel",
 				}),
 				New("TextLabel", {
@@ -2890,7 +2890,7 @@ Components.TitleBar = (function()
 						TextColor3 = "Text",
 					},
 					
-					Text = "...",
+					Text = Config.SubTitle,
 					Name = "SubTitleLabel",
 				}),
 				New("UIListLayout", {
@@ -2943,21 +2943,12 @@ Components.TitleBar = (function()
 			Library.Window:Minimize()
 		end)
 		
-		TextSize(TitleBar.TitleLabel)
-		TextSize(TitleBar.SubTitleLabel)
-		if TitleBar.TitleLabel then
-			Creator.AddSignal(TitleBar.TitleLabel:GetPropertyChangedSignal("Text"), function()
+		spawn(function()
+			while task.wait() do
 				TextSize(TitleBar.TitleLabel)
-			end)
-		end
-		if TitleBar.SubTitleLabel then
-			Creator.AddSignal(TitleBar.SubTitleLabel:GetPropertyChangedSignal("Text"), function()
 				TextSize(TitleBar.SubTitleLabel)
-			end)
-		end
-		
-		TitleBar.TitleLabel.Text = Config.Title
-		TitleBar.SubTitleLabel.Text = Config.SubTitle
+			end
+		end)
 		return TitleBar
 	end
 end)()
@@ -3354,11 +3345,7 @@ Components.Window = (function()
 			LastTime = 0
 			Window.SelectorPosMotor:setGoal(Instant(TabModule:GetCurrentTabPos()))
 		end)
-		
-		if Window.TitleBar.TitleLabel and Window.TitleBar.SubTitleLabel then
-			TextSize(Window.TitleBar.TitleLabel)
-			TextSize(Window.TitleBar.SubTitleLabel)
-		end
+
 		return Window
 	end
 end)()
