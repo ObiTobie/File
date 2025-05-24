@@ -2910,9 +2910,9 @@ Components.TitleBar = (function()
 		TitleBar.SubTitleLabel = TitleBar.Frame.Frame.SubTitleLabel
 		
 		if TitleBar.TitleLabel and TitleBar.SubTitleLabel then
-			TitleBar.TitleLabel.Text = "LOADING"
-			TitleBar.SubTitleLabel.Text = "LOADING"
-			delay(10, function()
+			TitleBar.TitleLabel.Text = "..."
+			TitleBar.SubTitleLabel.Text = "..."
+			delay(2, function()
 				TitleBar.TitleLabel.Text = Config.Title
 				TitleBar.SubTitleLabel.Text = Config.SubTitle
 			end)
