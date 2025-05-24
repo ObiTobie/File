@@ -2869,7 +2869,7 @@ Components.TitleBar = (function()
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
-					Text = Config.Title,
+					Text = "...",
 					Name = "TitleLabel",
 				}),
 				New("TextLabel", {
@@ -2890,7 +2890,7 @@ Components.TitleBar = (function()
 						TextColor3 = "Text",
 					},
 					
-					Text = Config.SubTitle,
+					Text = "...",
 					Name = "SubTitleLabel",
 				}),
 				New("UIListLayout", {
@@ -2955,6 +2955,9 @@ Components.TitleBar = (function()
 				TextSize(TitleBar.SubTitleLabel)
 			end)
 		end
+		
+		TitleBar.TitleLabel.Text = Config.Title
+		TitleBar.SubTitleLabel.Text = Config.SubTitle
 		return TitleBar
 	end
 end)()
