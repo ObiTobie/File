@@ -2777,7 +2777,6 @@ Components.Textbox = (function()
 		return Textbox
 	end
 end)()
-
 Components.TitleBar = (function()
 	local New = Creator.New
 	local AddSignal = Creator.AddSignal
@@ -2841,47 +2840,42 @@ Components.TitleBar = (function()
 		end
 
 		TitleBar.Frame = New("Frame", {
-			Name = "TitleBar",
 			Size = UDim2.new(1, 0, 0, 42),
 			BackgroundTransparency = 1,
 			Parent = Config.Parent,
 		}, {
 			New("Frame", {
-				Name = "TextGroup",
 				Size = UDim2.new(1, -16, 1, 0),
 				Position = UDim2.new(0, 16, 0, 0),
 				BackgroundTransparency = 1,
-				ClipsDescendants = false,
 			}, {
 				New("UIListLayout", {
 					Padding = UDim.new(0, 5),
 					FillDirection = Enum.FillDirection.Horizontal,
 					SortOrder = Enum.SortOrder.LayoutOrder,
-					HorizontalAlignment = Enum.HorizontalAlignment.Left,
 				}),
 				New("TextLabel", {
-					Name = "TitleLabel",
 					RichText = true,
-					Text = Config.Title or "Title",
 					FontFace = Font.new(
 						"rbxasset://fonts/families/GothamSSm.json",
 						Enum.FontWeight.Regular,
 						Enum.FontStyle.Normal
 					),
 					TextSize = 12,
-					TextXAlignment = Enum.TextXAlignment.Left,
-					TextYAlignment = Enum.TextYAlignment.Center,
+					TextXAlignment = "Left",
+					TextYAlignment = "Center",
+					Size = UDim2.fromScale(0, 1),
 					AutomaticSize = Enum.AutomaticSize.X,
-					Size = UDim2.new(0, 0, 1, 0),
 					BackgroundTransparency = 1,
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
+					
+					Name = "TitleLabel",
+					Text = "",
 				}),
 				New("TextLabel", {
-					Name = "SubTitleLabel",
 					RichText = true,
-					Text = Config.SubTitle or "SubTitle",
 					TextTransparency = 0.4,
 					FontFace = Font.new(
 						"rbxasset://fonts/families/GothamSSm.json",
@@ -2889,18 +2883,20 @@ Components.TitleBar = (function()
 						Enum.FontStyle.Normal
 					),
 					TextSize = 12,
-					TextXAlignment = Enum.TextXAlignment.Left,
-					TextYAlignment = Enum.TextYAlignment.Center,
+					TextXAlignment = "Left",
+					TextYAlignment = "Center",
+					Size = UDim2.fromScale(0, 1),
 					AutomaticSize = Enum.AutomaticSize.X,
-					Size = UDim2.new(0, 0, 1, 0),
 					BackgroundTransparency = 1,
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
+					
+					Text = "",
+					Name = "SubTitleLabel",
 				}),
 			}),
 			New("Frame", {
-				Name = "Underline",
 				BackgroundTransparency = 0.5,
 				Size = UDim2.new(1, 0, 0, 1),
 				Position = UDim2.new(0, 0, 1, 0),
@@ -2909,8 +2905,15 @@ Components.TitleBar = (function()
 				},
 			}),
 		})
+		
+		TitleBar.TitleLabel = TitleBar.Frame.Frame.TitleLabel
+		TitleBar.SubTitleLabel = TitleBar.Frame.Frame.SubTitleLabel
+		
+		if TitleBar.TitleLabel and TitleBar.SubTitleLabel then
+			TitleBar.TitleLabel.Text = Config.Title
+			TitleBar.SubTitleLabel.Text = Config.SubTitle
+		end
 
-		-- Control buttons
 		TitleBar.CloseButton = BarButton(Components.Assets.Close, UDim2.new(1, -4, 0, 4), TitleBar.Frame, function()
 			Library.Window:Dialog({
 				Title = "Close",
@@ -2928,11 +2931,9 @@ Components.TitleBar = (function()
 				},
 			})
 		end)
-
 		TitleBar.MaxButton = BarButton(Components.Assets.Max, UDim2.new(1, -40, 0, 4), TitleBar.Frame, function()
 			Config.Window.Maximize(not Config.Window.Maximized)
 		end)
-
 		TitleBar.MinButton = BarButton(Components.Assets.Min, UDim2.new(1, -80, 0, 4), TitleBar.Frame, function()
 			Library.Window:Minimize()
 		end)
@@ -2940,7 +2941,6 @@ Components.TitleBar = (function()
 		return TitleBar
 	end
 end)()
-
 Components.Window = (function()
 	local Spring = Flipper.Spring.new
 	local Instant = Flipper.Instant.new
