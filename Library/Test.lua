@@ -2910,9 +2910,9 @@ Components.TitleBar = (function()
 		})
 		
 		TitleBar.TitleLabel = TitleBar.Frame.Frame.TitleLabel
-		TextSize(TitleBar.TitleLabel, TitleBar.TitleLabel.Text)
+		TextSize(TitleBar.TitleLabel, TitleBar.TitleLabel)
 		TitleBar.SubTitleLabel = TitleBar.Frame.Frame.SubTitleLabel
-		TextSize(TitleBar.SubTitleLabel, TitleBar.SubTitleLabel.Text)
+		TextSize(TitleBar.SubTitleLabel, TitleBar.SubTitleLabel)
 		
 		--if TitleBar.TitleLabel and TitleBar.SubTitleLabel then
 		--	delay(1, function()
