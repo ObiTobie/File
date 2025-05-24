@@ -2856,7 +2856,6 @@ Components.TitleBar = (function()
 				}),
 				New("TextLabel", {
 					RichText = true,
-					Text = Config.Title,
 					FontFace = Font.new(
 						"rbxasset://fonts/families/GothamSSm.json",
 						Enum.FontWeight.Regular,
@@ -2871,10 +2870,10 @@ Components.TitleBar = (function()
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
+					Text = Config.Title,
 				}),
 				New("TextLabel", {
 					RichText = true,
-					Text = Config.SubTitle,
 					TextTransparency = 0.4,
 					FontFace = Font.new(
 						"rbxasset://fonts/families/GothamSSm.json",
@@ -2890,6 +2889,7 @@ Components.TitleBar = (function()
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
+					Text = Config.SubTitle,
 				}),
 			}),
 			New("Frame", {
