@@ -31,6 +31,10 @@ local RenderStepped = RunService.RenderStepped
 
 local ProtectGui = protectgui or (syn and syn.protect_gui) or function() end
 
+local TextSize = function(TextLabel,label)
+	TextLabel.Size = UDim2.new(0, label.TextBounds.X, 1, 0)
+end
+
 local Themes = {
 	Names = {
 		"Dark",
@@ -2783,10 +2787,6 @@ Components.TitleBar = (function()
 
 	return function(Config)
 		local TitleBar = {}
-		
-		local TextSize = function(TextLabel,label)
-			TextLabel.Size = UDim2.new(0, label.TextBounds.X, 1, 0)
-		end
 
 		local function BarButton(Icon, Pos, Parent, Callback)
 			local Button = {
@@ -2910,9 +2910,7 @@ Components.TitleBar = (function()
 		})
 		
 		TitleBar.TitleLabel = TitleBar.Frame.Frame.TitleLabel
-		TextSize(TitleBar.TitleLabel, TitleBar.TitleLabel)
 		TitleBar.SubTitleLabel = TitleBar.Frame.Frame.SubTitleLabel
-		TextSize(TitleBar.SubTitleLabel, TitleBar.SubTitleLabel)
 		
 		--if TitleBar.TitleLabel and TitleBar.SubTitleLabel then
 		--	delay(1, function()
@@ -2944,7 +2942,9 @@ Components.TitleBar = (function()
 		TitleBar.MinButton = BarButton(Components.Assets.Min, UDim2.new(1, -80, 0, 4), TitleBar.Frame, function()
 			Library.Window:Minimize()
 		end)
-
+		
+		TextSize(TitleBar.TitleLabel, TitleBar.TitleLabel)
+		TextSize(TitleBar.SubTitleLabel, TitleBar.SubTitleLabel)
 		return TitleBar
 	end
 end)()
@@ -3071,7 +3071,11 @@ Components.Window = (function()
 			Parent = Window.Root,
 			Window = Window,
 		})
-
+		
+		if Window.TitleBar.TitleLabel and Window.TitleBar.SubTitleLabel then
+		TextSize(Window.TitleBar.TitleLabel, Window.TitleBar.TitleLabel)
+		TextSize(Window.TitleBar.SubTitleLabel, Window.TitleBar.SubTitleLabel)
+		end
 		if Library.UseAcrylic then
 			Window.AcrylicPaint.AddParent(Window.Root)
 		end
