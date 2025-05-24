@@ -2850,8 +2850,8 @@ Components.TitleBar = (function()
 				BackgroundTransparency = 1,
 			}, {
 				New("TextLabel", {
-					RichText = true,
 					AutomaticSize = Enum.AutomaticSize.X,
+					RichText = true,
 					Size = UDim2.fromScale(0, 1),
 					FontFace = Font.new(
 						"rbxasset://fonts/families/GothamSSm.json",
@@ -2865,13 +2865,12 @@ Components.TitleBar = (function()
 					ThemeTag = {
 						TextColor3 = "Text",
 					},
-					
-					Name = Config.Title,
-					Text = "...",
+					Text = Config.Title,
+					Name = "TitleLabel",
 				}),
 				New("TextLabel", {
-					RichText = true,
 					AutomaticSize = Enum.AutomaticSize.X,
+					RichText = true,
 					Size = UDim2.fromScale(0, 1),
 					TextTransparency = 0.4,
 					FontFace = Font.new(
