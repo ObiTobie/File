@@ -147,7 +147,7 @@ local Themes = {
     },
     Deity_Color = {
         Name = "Deity_Color",
-        Accent = Color3.fromHex("0edeff"),
+        Accent = Color3.fromHex("06a5f4"),
         AcrylicMain = Color3.fromRGB(30, 30, 30),
         AcrylicBorder = Color3.fromRGB(60, 60, 60),
         AcrylicGradient = ColorSequence.new(Color3.fromRGB(11, 11, 11), Color3.fromRGB(0, 0, 0)),
