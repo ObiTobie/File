@@ -31,8 +31,8 @@ local RenderStepped = RunService.RenderStepped
 
 local ProtectGui = protectgui or (syn and syn.protect_gui) or function() end
 
-local TextSize = function(TextLabel,label)
-	TextLabel.Size = UDim2.new(0, label.TextBounds.X, 1, 0)
+local TextSize = function(TextLabel)
+	TextLabel.Size = UDim2.new(0, TextLabel.TextBounds.X, 1, 0)
 end
 
 local Themes = {
@@ -2943,8 +2943,18 @@ Components.TitleBar = (function()
 			Library.Window:Minimize()
 		end)
 		
-		TextSize(TitleBar.TitleLabel, TitleBar.TitleLabel)
-		TextSize(TitleBar.SubTitleLabel, TitleBar.SubTitleLabel)
+		TextSize(TitleBar.TitleLabel)
+		TextSize(TitleBar.SubTitleLabel)
+		if TitleBar.TitleLabel then
+			Creator.AddSignal(TitleBar.TitleLabel:GetPropertyChangedSignal("Text"), function()
+				TextSize(TitleBar.TitleLabel)
+			end)
+		end
+		if TitleBar.SubTitleLabel then
+			Creator.AddSignal(TitleBar.SubTitleLabel:GetPropertyChangedSignal("Text"), function()
+				TextSize(TitleBar.SubTitleLabel)
+			end)
+		end
 		return TitleBar
 	end
 end)()
@@ -3073,8 +3083,8 @@ Components.Window = (function()
 		})
 		
 		if Window.TitleBar.TitleLabel and Window.TitleBar.SubTitleLabel then
-		TextSize(Window.TitleBar.TitleLabel, Window.TitleBar.TitleLabel)
-		TextSize(Window.TitleBar.SubTitleLabel, Window.TitleBar.SubTitleLabel)
+		TextSize(Window.TitleBar.TitleLabel)
+		TextSize(Window.TitleBar.SubTitleLabel)
 		end
 		if Library.UseAcrylic then
 			Window.AcrylicPaint.AddParent(Window.Root)
